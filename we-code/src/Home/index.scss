@@ -1,0 +1,102 @@
+.we-code-home {
+  position: relative;
+  background-color: rgb(32, 32, 34);
+  min-height: 100vh;
+  .home-header {
+    min-width: 992px;
+    max-width: 2000px;
+    height: 600px;
+    background-image: url(https://static.leetcode-cn.com/cn-mono-assets/production/main/assets/banner.fc448155.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .logo-container {
+    position: absolute;
+    top: 82px;
+    left: calc(50% + 35px);
+    width: 434px;
+  }
+
+  .logo {
+    position: absolute;
+    right: 102px;
+    top: 100px;
+    width: 163px;
+    animation: 2.8s ease-in-out 0s infinite alternate none running animation-logo;
+  }
+
+  .logo2-container {
+    position: absolute;
+    top: 92px;
+    left: 42px;
+    width: 122px;
+    height: 102px;
+
+    img {
+      position: absolute;
+      bottom: 0px;
+      width: 118px;
+      animation: 1.8s ease-in-out 0s infinite alternate none running animation-logo2;
+    }
+
+    .logo2-2 {
+      bottom: 16px;
+    }
+
+    .logo2-3 {
+      bottom: 32px;
+    }
+  }
+
+  .logo3-container {
+    position: absolute;
+    top: 290px;
+    left: auto;
+    right: 26px;
+    width: 122px;
+    height: 86px;
+  }
+  
+  .home-title {
+    position: absolute;
+    left: -450px;
+    top: 100px;
+    color: white;
+    font-size: 30px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      font-size: 45px;
+    }
+
+    img {
+      width: 60px;
+      margin-right: 10px;
+    }
+
+    .date {
+      margin-top: 30px;
+      text-align: center;
+      color: rgb(255, 161, 22);
+    }
+
+  }
+
+  @keyframes animation-logo {
+    100% {
+      transform: translateY(-35px);
+    } 
+  }
+
+  @keyframes animation-logo2 {
+    0%, 33% {
+      transform: translateY(0px);
+    }
+    89%, 100% {
+      transform: translateY(-20px);
+    }
+  }
+}
