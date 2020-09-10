@@ -48,7 +48,7 @@ class Home extends React.Component<Props, State, {}> {
             <section className="home-title">
               <p className="title">
                 <span>
-                  <img src={process.env.PUBLIC_URL + 'bei.png'} alt=""/>
+                  <img src={process.env.PUBLIC_URL + '/bei.png'} alt=""/>
                 </span>
                 <span>医院支撑组编程大赛</span>
               </p>
