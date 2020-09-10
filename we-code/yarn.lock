@@ -7135,6 +7135,16 @@ mobx-react@^6.3.0:
   dependencies:
     mobx-react-lite ">=2.2.0"
 
+mobx@^5.15.6:
+  version "5.15.6"
+  resolved "https://registry.npm.taobao.org/mobx/download/mobx-5.15.6.tgz#24750af56f87bcf9c3cf82ece4c79eb91bb71968"
+  integrity sha1-JHUK9W+HvPnDz4Ls5MeeuRu3GWg=
+
+moment@^2.27.0:
+  version "2.27.0"
+  resolved "https://registry.npm.taobao.org/moment/download/moment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"
+  integrity sha1-i/9OPiaiNiIN/j423nVrbrqgEF0=
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
