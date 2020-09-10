@@ -1,7 +1,7 @@
 import { observable } from 'mobx';
 import moment from 'moment'
 export const timeDate = observable({
-  startTime: '2020-09-17 16:00:00',
+  startTime: '2020-09-17 19:00:00',
   beginTimeStr: ''
 })
 

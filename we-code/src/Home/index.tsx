@@ -21,7 +21,15 @@ class Home extends React.Component<Props, State, {}> {
       prizeList: [
         {
           title: '第一名',
-          des: '获胜者得 200 左右的奖品'
+          des: '优先挑选精美礼品'
+        },
+        {
+          title: '第二名',
+          des: '第二挑选精美礼品'
+        },
+        {
+          title: '第三名',
+          des: '精美礼品一份'
         }
       ]
     };
@@ -97,10 +105,10 @@ class Home extends React.Component<Props, State, {}> {
                  <i className="box-icon"></i>
                </p>
                <p className="rule-item">
-                 1. 算法比赛共计 5 题，比赛时长 120 分钟。
+                 1. 算法比赛共计 5 题，比赛时长 90 分钟。
                </p>
                <p className="rule-item">
-                 2. 题目依据难易度有不同分值，得分越高排名越高；在得分相同的情况下，答题用时越少则排名越高。
+                 2. 题目依据难易度有不同分值，得分越高排名越高；在得分相同的情况下，答题用时越少则排名越高(注：解法不限)。
                </p>
                <p className="rule-item">
                  3. 比赛中每提交一次错误解答，解答用时将增加 5 分钟，请谨慎提交解答，避免过多错误提交导致完赛用时过长。
