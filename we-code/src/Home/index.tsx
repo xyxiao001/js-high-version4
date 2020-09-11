@@ -2,6 +2,7 @@ import React from 'react';
 import './index.scss'
 import { observer } from "mobx-react"
 import { timeDate } from '../mobx/common'
+import { Button } from 'antd';
 
 export interface Props{
 }
@@ -69,6 +70,10 @@ class Home extends React.Component<Props, State, {}> {
           <p className="begin-container">
             <span className="begin-time">距离比赛开始还剩</span>
             <span className="time">{ timeDate.beginTimeStr }</span>
+          </p>
+
+          <p className="start-btn">
+            <Button type="primary" size="large">点击开始答题</Button>
           </p>
 
           <section className="content-box">

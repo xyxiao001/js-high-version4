@@ -217,6 +217,12 @@
     }
   }
 
+  .start-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+
   @keyframes animation-logo {
     100% {
       transform: translateY(-35px);
