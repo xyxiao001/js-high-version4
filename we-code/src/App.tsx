@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
@@ -12,11 +12,11 @@ function App() {
     <section className="we-code">
       <Router>
         <Switch>
-          <Route path="/" >
-            <Home />
-          </Route>
-          <Route path="/" >
+          <Route path="/list" >
             <List />
+          </Route>
+          <Route path="/" exact>
+            <Home />
           </Route>
         </Switch>
       </Router>

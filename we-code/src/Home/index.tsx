@@ -3,9 +3,8 @@ import './index.scss'
 import { observer } from "mobx-react"
 import { timeDate } from '../mobx/common'
 import { Button } from 'antd';
+import { withRouter } from 'react-router';
 
-export interface Props{
-}
 export interface State{
   prizeList: prizeItem[];
 }
@@ -15,8 +14,8 @@ export interface prizeItem {
   des: string
 }
 @observer
-class Home extends React.Component<Props, State, {}> {
-  constructor(props: Props) {
+class Home extends React.Component<any, State, {}> {
+  constructor(props: any) {
     super(props);
     this.state = {
       prizeList: [
@@ -35,14 +34,18 @@ class Home extends React.Component<Props, State, {}> {
       ]
     };
   }
-  
+
+  handleClick () {
+    this.props.history.push('/list')
+  }
+
   render() {
     return (
       <section className="we-code-home">
         <section className="home-header">
 
           <section className="logo-container">
-            <img src="http://hp.guahao-inc.com/_nuxt/img/7a19e60.png" className="logo" alt="logo"/>
+            <img src={process.env.PUBLIC_URL + '/logo.png'} className="logo" alt="logo"/>
             <section className="logo2-container">
               <img src="https://static.leetcode-cn.com/cn-mono-assets/production/main/assets/animation-square.5bc7b589.png" alt="logo2" className="logo2-1"/>
               <img src="https://static.leetcode-cn.com/cn-mono-assets/production/main/assets/animation-square.5bc7b589.png" alt="logo2" className="logo2-2" />
@@ -73,7 +76,7 @@ class Home extends React.Component<Props, State, {}> {
           </p>
 
           <p className="start-btn">
-            <Button type="primary" size="large">点击开始答题</Button>
+            <Button type="primary" size="large" onClick={() => this.handleClick()}>点击开始答题</Button>
           </p>
 
           <section className="content-box">
@@ -134,4 +137,4 @@ class Home extends React.Component<Props, State, {}> {
   }
 }
 
-export default Home;
+export default withRouter(Home)
