@@ -70,10 +70,18 @@ class Home extends React.Component<any, State, {}> {
         </section>
 
         <section className="home-content">
-          <p className="begin-container">
-            <span className="begin-time">距离比赛开始还剩</span>
-            <span className="time">{ timeDate.beginTimeStr }</span>
-          </p>
+          <section className="begin-container">
+            {
+              !timeDate.isBegin ? 
+              <p>
+                <span className="begin-time">距离比赛开始还剩</span>
+                <span className="time">{ timeDate.beginTimeStr }</span>
+              </p> :
+              <p>
+                <span className="begin-time">比赛已经开始，点击开始答题</span>
+              </p>
+            }
+          </section>
 
           <p className="start-btn">
             <Button type="primary" size="large" onClick={() => this.handleClick()}>点击开始答题</Button>
