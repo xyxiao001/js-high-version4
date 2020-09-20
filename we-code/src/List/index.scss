@@ -1,5 +1,13 @@
 .we-code-list {
   display: flex;
-  height: 100vh;
   flex-wrap: wrap;
+  padding: 40px;
+}
+
+.control-list {
+  margin-bottom: 20px;
+}
+
+.editor-box {
+  width: 100%;
 }

@@ -7,7 +7,7 @@ import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution'
 // 代码 crtl+f 
 import 'monaco-editor/esm/vs/editor/contrib/find/findController.js'
 
-function Editor() {
+function Editor(props: any) {
   const editorRef = useRef(null)
   const [monacoInstance, setMonacoInstance]: any = useState(null);
 
@@ -15,8 +15,9 @@ function Editor() {
     if (editorRef && !monacoInstance) {
       console.log('开始初始化编辑器', editorRef, monacoInstance)
       const editorContainer = editorRef.current as unknown as HTMLElement
+      // 设置初始化的默认参数
       setMonacoInstance(monaco.editor.create(editorContainer, {
-        value:`/* 开始答题喽 */`,
+        value: '',
         language: 'typescript'
       }))
     }
@@ -28,6 +29,16 @@ function Editor() {
       }
     }
   }, [monacoInstance])
+
+  useEffect(() => {
+    if (monacoInstance) {
+      // 绑定初始更新事件
+      monacoInstance.onDidChangeModelContent(() => {
+        const newValue = monacoInstance.getValue()
+        props.handleUpdateCode(newValue)
+      })
+    }
+  }, [monacoInstance, props])
 
   return (
     <section className="we-code-editor">
