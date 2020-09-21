@@ -37,6 +37,7 @@ function Editor(props: any) {
         const newValue = monacoInstance.getValue()
         props.handleUpdateCode(newValue)
       })
+      monacoInstance.setValue(props.value)
     }
   }, [monacoInstance, props])
 
