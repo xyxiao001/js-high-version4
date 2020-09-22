@@ -102,6 +102,10 @@ function List() {
   }, [])
 
   const handleProblemClick = (name: string) => {
+    if (isRunning) {
+      message.warning('代码还在执行中，请等待执行完成后切换!!')
+      return
+    }
     resetEditor()
     setCurrent(name)
   }
@@ -164,6 +168,7 @@ function List() {
       </section>
       <section className="control-list">
         <Button onClick={handleRun} loading={isRunning}>运行测试用例</Button>
+        <Button>恢复初始代码</Button>
       </section>
       <section className="editor-box">
         <Editor handleUpdateCode={handleUpdateCode} value={code}></Editor>

@@ -2,6 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   padding: 40px;
+
+  .ant-btn {
+    margin-right: 30px;
+  }
 }
 
 .control-list {
@@ -23,6 +27,7 @@
 }
 
 .problem-item {
+  position: relative;
   width: 300px;
   height: 200px;
   background-color: rgb(245, 245, 245);
