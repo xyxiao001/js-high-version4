@@ -3,7 +3,7 @@ import moment from 'moment'
 import { twoNumber } from '../tools'
 export const timeDate = observable({
   isBegin: false,
-  startTime: '2020-09-23 19:00:00',
+  startTime: '2020-09-24 19:00:00',
   beginTimeStr: ''
 })
 

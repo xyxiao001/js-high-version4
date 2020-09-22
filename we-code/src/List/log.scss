@@ -1,0 +1,17 @@
+.we-code-log {
+  width: 400px;
+  height: 100%;
+  overflow-y: auto;
+  flex-shrink: 0;
+  border: 1px solid #cccccc;
+  margin: 0 20px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.log-message {
+  word-break: break-all;
+}
