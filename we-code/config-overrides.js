@@ -3,7 +3,10 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
 module.exports = function override(config, env) {
   // 关于webpack的相关配置
   // 添加编辑器插件
-  config.plugins.push(new MonacoWebpackPlugin())
+  config.plugins.push(new MonacoWebpackPlugin({
+    languages:["javascript","css","html","json"],
+    features:["coreCommands","find"]
+  }))
   // 添加 webWorker 的插件, 注意要先处理 web worker
   config.module.rules.unshift({
     test: /\.worker\.ts$/,
