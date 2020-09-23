@@ -2,7 +2,7 @@ import React, { useState, useEffect, SetStateAction, Dispatch, useCallback } fro
 import Editor from './editor'
 import Log from './log'
 import './index.scss'
-import { Button, message } from 'antd' 
+import { Button, message, Tag, Popconfirm } from 'antd' 
 import problem from '../problem'
 import { InterfaceProblemAll, InterfaceProblem, InterfaceWorkerMessage  } from '../interface'
 import runWorker from './run.worker'
@@ -12,6 +12,8 @@ let set: any = ''
 
 function List() {
   const [code, setCode] = useState('')
+
+  const [originCode, setOriginCode] = useState('')
 
   const [current, setCurrent] = useState('climbStairs')
 
@@ -45,6 +47,11 @@ function List() {
     setCode(code)
   }
 
+  // 重置代码
+  const handleResetCode = () => {
+    setCode(originCode)
+  }
+
   // 点击执行测试用例
   const handleRun = () => {
     if (worker) {
@@ -63,8 +70,8 @@ function List() {
           message.error('代码执行超时')
           setIsRunning(false)
           worker.terminate()
-          setWorker(null)
           clearInterval(set)
+          setWorker(null)
         }
         runTime += 100
       }, 100)
@@ -117,6 +124,17 @@ function List() {
     clearInterval(set)
   }
 
+  const getTagColor = (str: string): string => {
+    let key = 'green'
+    if (str === 'hard') {
+      key = 'red'
+    }
+    if (str === 'medium') {
+      key = 'blue'
+    }
+    return key
+  }
+
   useEffect(() => {
     return () => {
       if (worker) {
@@ -132,7 +150,9 @@ function List() {
     const key: keyof InterfaceProblemAll<string> = current
     const cur = problem[key]
     if (cur) {
-      setCode(cur.templateDefault)
+      const editorCode = cur.answer || cur.templateDefault
+      setCode(editorCode)
+      setOriginCode(cur.templateDefault)
     }
     return () => {
       // cleanup
@@ -160,7 +180,10 @@ function List() {
         {
           problemList.map((item: InterfaceProblem) => (
             <section className="problem-item" key={item.name} onClick={() => handleProblemClick(item.name)}>
-              <p className="title">{ item.name }</p>
+              <p className="title">
+                <span>{ item.name }</span>
+                <Tag color={getTagColor(item.difficulty)}>{ item.difficulty }</Tag>
+              </p>
               <p>{ item.des }</p>
             </section>
           ))
@@ -168,7 +191,14 @@ function List() {
       </section>
       <section className="control-list">
         <Button onClick={handleRun} loading={isRunning}>运行测试用例</Button>
-        <Button>恢复初始代码</Button>
+        <Popconfirm
+          title="是否需要恢复初始代码"
+          onConfirm={handleResetCode}
+          okText="确定"
+          cancelText="取消"
+        >
+          <Button>恢复初始代码</Button>
+        </Popconfirm>
       </section>
       <section className="editor-box">
         <Editor handleUpdateCode={handleUpdateCode} value={code}></Editor>

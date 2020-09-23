@@ -48,12 +48,12 @@ const runTest = (func: Function, cur: InterfaceProblem, time: number) => {
     if (res) {
       ctx.postMessage({
         type: 'running',
-        message: `第${i + 1}个测试用例执行成功, 入参${JSON.stringify(curCase.params)}, 期望结果${curCase.result}, 实际运行结果${running}`
+        message: `第${i + 1}个测试用例执行成功, 入参${JSON.stringify(curCase.params)}, 期望结果${JSON.stringify(curCase.result)}, 实际运行结果${JSON.stringify(running)}`
       })
     } else {
       ctx.postMessage({
         type: 'error',
-        message: `第${i + 1}个测试用例执行失败, 入参${JSON.stringify(curCase.params)}, 期望结果${curCase.result}, 实际运行结果${running}`
+        message: `第${i + 1}个测试用例执行失败, 入参${JSON.stringify(curCase.params)}, 期望结果${JSON.stringify(curCase.result)}, 实际运行结果${JSON.stringify(running)}`
       })
       break;
     }
