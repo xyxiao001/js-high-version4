@@ -1,8 +1,8 @@
 import React from 'react';
 import './index.scss'
 import { observer } from "mobx-react"
-import { timeDate } from '../mobx/common'
-import { Button } from 'antd';
+import common from '../mobx/common'
+import { Button, message } from 'antd';
 import { withRouter } from 'react-router';
 
 export interface State{
@@ -36,7 +36,11 @@ class Home extends React.Component<any, State, {}> {
   }
 
   handleClick () {
-    this.props.history.push('/list')
+    if (common.timeDate.isBegin) {
+      this.props.history.push('/list')
+    } else {
+      message.warning('比赛还没开始哦，稍等一下下')
+    }
   }
 
   render() {
@@ -64,7 +68,7 @@ class Home extends React.Component<any, State, {}> {
                 </span>
                 <span>医院支撑组编程大赛</span>
               </p>
-                <p className="date">{ timeDate.startTime }</p>
+                <p className="date">{ common.timeDate.startTime }</p>
             </section>
           </section>
         </section>
@@ -72,10 +76,10 @@ class Home extends React.Component<any, State, {}> {
         <section className="home-content">
           <section className="begin-container">
             {
-              !timeDate.isBegin ? 
+              !common.timeDate.isBegin ? 
               <p>
                 <span className="begin-time">距离比赛开始还剩</span>
-                <span className="time">{ timeDate.beginTimeStr }</span>
+                <span className="time">{ common.timeDate.beginTimeStr }</span>
               </p> :
               <p>
                 <span className="begin-time">比赛已经开始，点击开始答题</span>
@@ -126,9 +130,9 @@ class Home extends React.Component<any, State, {}> {
                <p className="rule-item">
                  2. 题目依据难易度有不同分值，得分越高排名越高；在得分相同的情况下，答题用时越少则排名越高(注：解法不限)。
                </p>
-               <p className="rule-item">
-                 3. 比赛中每提交一次错误解答，解答用时将增加 5 分钟，请谨慎提交解答，避免过多错误提交导致完赛用时过长。
-               </p>
+               {/* <p className="rule-item">
+                 3. 比赛中每提交一次错误解答，解答用时将增加 2 分钟，请谨慎提交解答，避免过多错误提交导致完赛用时过长。
+               </p> */}
                <p className="rule-item">
                  4. 为了防止作弊行为，在提交错误解答后，会告知该错误的类型，不会告知具体的错误用例
                </p>

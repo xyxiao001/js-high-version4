@@ -9,6 +9,7 @@ import 'monaco-editor/esm/vs/editor/contrib/find/findController.js'
 
 function Editor(props: any) {
   const editorRef = useRef(null)
+  const [listener, setListener] = useState(false)
   const [monacoInstance, setMonacoInstance]: any = useState(null);
 
   useEffect(() => {
@@ -26,6 +27,7 @@ function Editor(props: any) {
       if (monacoInstance) {
         console.log(`执行清除编辑器操作`)
         monacoInstance.dispose()
+        setListener(false)
       }
     }
   }, [monacoInstance])
@@ -33,15 +35,19 @@ function Editor(props: any) {
   useEffect(() => {
     if (monacoInstance) {
       // 绑定初始更新事件
-      monacoInstance.onDidChangeModelContent(() => {
-        const newValue = monacoInstance.getValue()
-        props.handleUpdateCode(newValue)
-      })
+      if (!listener) {
+        monacoInstance.onDidChangeModelContent(() => {
+          const newValue = monacoInstance.getValue()
+          props.handleUpdateCode(newValue)
+        })
+        setListener(true)
+      }
+     
       if (props.value !== monacoInstance.getValue()) {
         monacoInstance.setValue(props.value)
       }
     }
-  }, [monacoInstance, props])
+  }, [listener, monacoInstance, props])
 
   return (
     <section className="we-code-editor">
