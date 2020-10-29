@@ -23,12 +23,11 @@ var levelOrder = function (root) {
   stack.push(root)
   while (stack.length !== 0) {
     const currentLevelSize = stack.length
-    ret.push([])
     for (let i = 1; i <= currentLevelSize; i++) {
       // 变量 i 无实际意义，只是为了循环 n 次
       // 将当前层的所有结点出队列，再将下一层的所有结点入队列
       const node = stack.shift()
-      ret[ret.length - 1].push(node.val)
+      ret.push(node.val)
       if (node.left) stack.push(node.left)
       if (node.right) stack.push(node.right)
     }
@@ -37,6 +36,8 @@ var levelOrder = function (root) {
   return ret
 }
 
+console.log(`层序遍历结果 A,B,C,D,F,G,I,E,H`)
+
 console.log(
-  `层序遍历 ${levelOrder(treeData)}`
+  `层序广度优先遍历 ${levelOrder(treeData)}`
 )
