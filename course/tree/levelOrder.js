@@ -26,6 +26,7 @@ var levelOrder = function (root) {
     ret.push([])
     for (let i = 1; i <= currentLevelSize; i++) {
       // 变量 i 无实际意义，只是为了循环 n 次
+      // 将当前层的所有结点出队列，再将下一层的所有结点入队列
       const node = stack.shift()
       ret[ret.length - 1].push(node.val)
       if (node.left) stack.push(node.left)
