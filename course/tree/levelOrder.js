@@ -1,3 +1,5 @@
+const treeData = require('./treeData').treeData
+
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -32,3 +34,7 @@ var levelOrder = function (root) {
 
   return ret
 }
+
+console.log(
+  `层序遍历 ${levelOrder(treeData)}`
+)

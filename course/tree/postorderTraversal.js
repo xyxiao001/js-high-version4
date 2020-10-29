@@ -1,3 +1,4 @@
+const treeData = require('./treeData').treeData
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -40,3 +41,15 @@ const postorderTraversal2 = root => {
   }
   return res
 }
+
+console.log(
+  `后序遍历结果为：DEFBHGICA`
+)
+
+console.log(
+  `递归 ${postorderTraversal1(treeData)}`
+)
+
+console.log(
+  `迭代 ${postorderTraversal2(treeData)}`
+)

@@ -1,3 +1,5 @@
+const treeData = require('./treeData').treeData
+
 /**
  * Definition for a binary tree node.
  * function TreeNode(val) {
@@ -22,7 +24,7 @@
 // }
 
 // 递归
-var inorderTraversa1 = function (root) {
+var inorderTraversal1 = function (root) {
   const res = [];
   const inorder = (root) => {
     if (!root) {
@@ -53,3 +55,16 @@ var inorderTraversal2 = function (root) {
   }
   return res
 };
+
+
+console.log(
+  `中序遍历结果为：DBEFAGHCI`
+)
+
+console.log(
+  `递归 ${inorderTraversal1(treeData)}`
+)
+
+console.log(
+  `迭代 ${inorderTraversal2(treeData)}`
+)
