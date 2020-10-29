@@ -19,16 +19,16 @@ var levelOrder = function (root) {
   if (!root) {
     return ret
   }
-  const q = []
-  q.push(root)
-  while (q.length !== 0) {
-    const currentLevelSize = q.length
+  const stack = []
+  stack.push(root)
+  while (stack.length !== 0) {
+    const currentLevelSize = stack.length
     ret.push([])
     for (let i = 1; i <= currentLevelSize; i++) {
-      const node = q.shift()
+      const node = stack.shift()
       ret[ret.length - 1].push(node.val)
-      if (node.left) q.push(node.left)
-      if (node.right) q.push(node.right)
+      if (node.left) stack.push(node.left)
+      if (node.right) stack.push(node.right)
     }
   }
 
